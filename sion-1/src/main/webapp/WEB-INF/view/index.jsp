@@ -1,8 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <title>下水道処理システム</title>
+	 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
 <style type="text/css">
 .auto-style1 {
 	width: 146px;
@@ -47,8 +52,7 @@
 </style>
 </head>
 <body>
-
-	<div style="height: 621px">
+<div style="height: 621px">
 		<div style="height: 150px">
 
 			<div
@@ -72,19 +76,26 @@
 							</tr>
 							<tr>
 								<td align="right" class="auto-style10">USER :&nbsp;</td>
-								<td class="auto-style1"><input Width="101px" Height="19px"
-									ID="userId" name="userId"></input>
+								<td class="auto-style1">
+								<input Width="101px" Height="19px"
+									ID="userId" name="userId" value="${userId }"></input>
 							</tr>
 							<tr>
 								<td align="right" class="auto-style12">PW :</td>
-								<td class="auto-style1"><input ID="userPw" type="Password" name="userPw" Width="101px"></input>
+								<td class="auto-style1">
+								<input ID="userPw" type="Password" name="userPw" Width="101px" value="${userPw }"></input>
 									  
 									  <input type="submit" onclick="login" value="ログイン">
+									  <script type="text/javascript">
+									
+									  </script>
 								</td>
 							</tr>
 							<tr>
 								<td colspan="2">
-									<label id=errorLable></label>
+									  <span id="valid" style="color: red;">${valid_userId}</span> <br/>
+									 <span id="valid" style="color: red;">${valid_userPw}</span> 
+									<span id="valid" style="color: red;">${loginFail}</span> 
 								</td>
 							</tr>
 							
@@ -98,6 +109,5 @@
 
 		</div>
 	</div>
-	
 </body>
 </html>

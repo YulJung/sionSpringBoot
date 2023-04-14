@@ -19,9 +19,7 @@
 
 			下水道処理システム > 一覧
 			<hr />
-			<input class="btn btn-outline-danger" value="Logout" type="button"
-				ID="btnLogout" Font-Bold="true" Font-Size="16px"
-				OnClick="btnLogout_Click" style="margin-left: 90%"></input>
+		
 
 		</div>
 	</div>
@@ -29,14 +27,22 @@
 	
 		
 		<div style="margin-left: 30px">
-		年　　度 <select id="yearSelect" name="yearSelect">
-				<c:forEach var="year" items="${year }">
-					<option>${year.year }</option>
-				</c:forEach>
-			</select>
+		年　　度 <select id="yearSelect" name="yearSelect" >
+		<script>
+		var yearStart = 2015;
+		for(i=yearStart;i<2026;i++){
+			if(i==2023){
+			document.write("<option selected>"+i+"</option>");
+			}else{
+			 document.write("<option>"+i+"</option>");
+			}
+	
+			}
+		</script>
+		</select>
 			<span style="margin-left: 60%">
 				地域 
-				<select id="tifNoSelect" name="tifNoSelect">
+				<select id="placeSelect" name="placeSelect" onchange="placeSelect()">
 					<option value="1001">東京都</option>
 					<option value="1002">大阪</option>
 					<option value="1003">北海道</option>
@@ -45,7 +51,13 @@
 				</select>
 			</span>
 		</div>
-		
+		<script type="text/javascript">
+			function placeSelect(){
+				var selected = document.getElementById('placeSelect').value;
+				
+				location.href='/menu/list?place='+selected;
+			}
+		</script>
 		<div style="margin-left: 30px">
 		<form action="/list/search" method="get">
 			
@@ -99,7 +111,7 @@
 				<script type="text/javascript">
 					
 					function selected(i){		
-						alert(i);
+						
 						const target = document.getElementById('Button2');
 						  target.disabled = false;
 						  const target1 = document.getElementById('Button3');
@@ -111,6 +123,16 @@
 						tifSelected.value = test;
 					
 					}
+					function updateBtn(){
+						var tifNo = document.getElementById('tifNoInput').value;
+						
+						location.href='/detail/update?tifNo='+tifNo;
+					}
+					function deleteBtn(){
+						var tifNo = document.getElementById('tifNoInput').value;
+						
+						location.href='/detail/delete?tifNo='+tifNo;
+					}
 					</script>
 				
 	</div>
@@ -119,9 +141,9 @@
 			<input type="button" ID="Button1" Height="31px" Width="70px"
 			value="新　規" onclick="location.href='/detail/new'" style="margin-left: 50px" /> 
 			<input type="button" ID="Button2" Height="31px" value="修　正" Width="70px"
-			OnClick="location.href='/detail/update'" disabled="disabled" style="margin-left: 50px"/> 
+			OnClick="updateBtn()" disabled="disabled" style="margin-left: 50px"/> 
 			<input type="button" ID="Button3" Height="31px" value="削　除" Width="70px"
-			OnClick="location.href='/detail/delete'" disabled="disabled" style="margin-left: 50px"/> 
+			OnClick="deleteBtn()" disabled="disabled" style="margin-left: 50px"/> 
 			<input	type="button" ID="Button4" Height="31px" value="戻る" Width="70px"
 			onclick="location.href='/menu/'" style="margin-left: 500px"/> <br /> <br /> <input
 			id="hddValue" type="hidden" />

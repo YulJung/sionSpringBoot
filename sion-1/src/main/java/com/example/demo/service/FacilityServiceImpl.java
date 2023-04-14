@@ -10,6 +10,7 @@ import com.example.demo.dto.DetailUpdateDTO;
 import com.example.demo.dto.FindList;
 import com.example.demo.dto.TifDetailDTO;
 import com.example.demo.dto.TifListDTO;
+import com.example.demo.entity.MainEntity;
 import com.example.demo.repository.FacilityRepository;
 
 import lombok.AllArgsConstructor;
@@ -37,8 +38,12 @@ public class FacilityServiceImpl implements FacilityService {
 
 	@Override
 	public TifDetailDTO findByTifNo(String tifNo) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		MainEntity main = fr.findByTifNo(tifNo);
+		System.out.println(tifNo);
+		TifDetailDTO dto = TifDetailDTO.toTifDetailDTO(main);
+		
+		return dto;
 	}
 
 	@Override

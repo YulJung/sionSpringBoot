@@ -17,9 +17,7 @@
 
                         下水道処理システム > メニュー
                         <hr/>
-                        <input class="btn btn-outline-danger" value="logout" type="button" ID="btnLogout" Font-Bold="true"  Font-Size="16px" 
-                        OnClick="btnLogout_Click" CssClass="auto-style1" style="margin-left: 725px"></input>
-                            
+               
                    
                     </div>
                  </div> 

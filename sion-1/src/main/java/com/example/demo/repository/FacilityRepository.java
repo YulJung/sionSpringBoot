@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+
 import com.example.demo.dto.FindList;
 import com.example.demo.dto.TifDetailDTO;
 import com.example.demo.dto.TifListDTO;
 import com.example.demo.entity.MainEntity;
+
 
 public interface FacilityRepository extends JpaRepository<MainEntity, Long>{
 
@@ -31,8 +33,10 @@ public interface FacilityRepository extends JpaRepository<MainEntity, Long>{
 			+ "	LEFT JOIN TIF_HARAI H ON M.TIF_NO = H.TIF_NO AND H.HARAI_DATE BETWEEN M.TIF_START_DATE AND M.TIF_END_DATE"
 			+ "	GROUP BY M.TIF_NO,M.TIF_NAME,B.BASYO_NAME,M.TIF_START_DATE,M.TIF_END_DATE,A.AMT_FEE",nativeQuery=true)
 	List<FindList> findList();
+
+	MainEntity findByTifNo(String tifNo);
 	
-	TifDetailDTO findByTifNo(String tifNo);
+	
 	//save
 	
 	//update

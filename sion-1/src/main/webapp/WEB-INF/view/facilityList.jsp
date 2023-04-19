@@ -59,14 +59,19 @@
 			}
 		</script>
 		<div style="margin-left: 30px">
-		<form action="/list/search" method="get">
+		
 			
 				
 				<input type="text" id="tifNoInput" name="tifNo" />
-				<input type="submit" value="検索" >
+				<input type="button" onclick="searchTifNo()" value="検索" >
+					<script type="text/javascript">
+			function searchTifNo(){
+				var tifno = document.getElementById('tifNoInput').value;
 				
-			
-		</form>
+				location.href='/menu/list?tifNo='+tifno;
+			}
+		</script>
+	
 			
 		</div>
 	

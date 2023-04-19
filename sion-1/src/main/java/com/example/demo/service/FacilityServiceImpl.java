@@ -22,18 +22,16 @@ public class FacilityServiceImpl implements FacilityService {
 	@Override
 	public List<FindList> findList() {
 		List<FindList> list = fr.findList();
-		System.out.println("list : "+list.get(0).getTifCount());
-		System.out.println("list : "+list.get(0).getBasyo_Name());
-		System.out.println("list : "+list.get(0).getTif_Name());
-		System.out.println("list : "+list.get(0).getAmt_Fee());
+		
 		
 		return list;
 	}
 
 	@Override
-	public Long save(DetailSaveDTO saveDTO) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
+	public Long save(TifDetailDTO detailDTO) throws IOException {
+		
+		MainEntity main = MainEntity.toMainEntity(detailDTO);
+		return fr.save(main).getMainId();
 	}
 
 	@Override
@@ -47,15 +45,31 @@ public class FacilityServiceImpl implements FacilityService {
 	}
 
 	@Override
-	public Long update(DetailUpdateDTO updateDTO) {
-		// TODO Auto-generated method stub
-		return null;
+	public Long update(TifDetailDTO updateDTO) {
+		MainEntity update = MainEntity.toUpdateEntity(updateDTO);
+		return fr.save(update).getMainId();
 	}
 
 	@Override
-	public boolean delete(String tifNo) {
+	public void delete(String tifNo) {
+		Long id = fr.findByTifNo(tifNo).getMainId();
+		fr.deleteById(id);
+	}
+
+	@Override
+	public List<FindList> findByTifPlace(String place) {
 		// TODO Auto-generated method stub
-		return false;
+		List<FindList> list = fr.findByTifPlace(place);
+		
+		return list;
+	}
+
+	@Override
+	public List<FindList> findByTifNoList(String tifNo) {
+		
+		List<FindList> list = fr.findByTifNoList(tifNo);
+		
+		return list;
 	}
 
 }

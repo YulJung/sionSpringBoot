@@ -21,27 +21,28 @@ public class TifDetailDTO {
 		private String tifArea;
 		private String tifWidth;
 		private String tifLength;
+		private Long mainId;
 		public static TifDetailDTO toTifDetailDTO(MainEntity main) {
 			TifDetailDTO dto = new TifDetailDTO();
 		
 			if(main.getTifArea()==null) {
-				dto.setTifArea("");
+				dto.setTifArea(" ");
 			}else {
 				dto.setTifArea(main.getTifArea());
 			}
 			if(main.getTifLength()==null) {
-				dto.setTifLength("");
+				dto.setTifLength(" ");
 			}else {
 				dto.setTifLength(main.getTifLength());
 			}
 			if(main.getTifWidth()==null) {
-				dto.setTifWidth("");
+				dto.setTifWidth(" ");
 			}else {
 				dto.setTifWidth(main.getTifWidth());
 			}
 			
 			dto.setTifEndDate(main.getTifEndDate());
-			
+			dto.setMainId(main.getMainId());
 			dto.setTifName(main.getTifName());
 			dto.setTifNo(main.getTifNo());
 			dto.setTifPlace(main.getTifPlace());

@@ -13,13 +13,17 @@ public interface FacilityService {
 
 	List<FindList> findList();
 	
-	Long save(DetailSaveDTO saveDTO) throws IOException;
+	Long save(TifDetailDTO detailDTO) throws IOException;
 	
 	TifDetailDTO findByTifNo(String tifNo);
 	
-	Long update(DetailUpdateDTO updateDTO);
+	Long update(TifDetailDTO updateDTO);
 	
-	boolean delete(String tifNo);
+	void delete(String tifNo);
+
+	List<FindList> findByTifPlace(String place);
+
+	List<FindList> findByTifNoList(String tifNo);
 	
 	
 }
